@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de l'Examen Blanc - EMG</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <link rel="shortcut icon" href="Design sans titre_20250217_100800_0000.png" type="image/x-icon">
+    <style>
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(KGQZAMQGT5AYFJLQWEXN33Y5TU.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
+}
+html,body {
+    height: 100%;
+}
+   
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+    color: #003366; /* Bleu foncé */
+    
+    
+}
+.navbar {
+    height: 20px;
+    position: absolute;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+}
+.navbar a {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(23, 4, 135);
+
+}
+.logo img {
+    position: absolute;
+    height: 60px; /* Ajuste la taille du logo */
+    left: 20px;
+    top: 25px;
+    
+}
+.navbar .logo {
+    position: absolute;
+    top: 38px;
+    font-size: 1.7em;
+    font-weight: bold;  
+    white-space: nowrap;
+}
+@media screen and (max-width:500px){
+    .navbar .logo {
+        position: absolute;
+        top: 45px;
+        font-size: 0.7em;
+        font-weight: bold;  
+        white-space: nowrap;
+        justify-content: center;
+        align-items: center;
+    } 
+    .contact-btn {
+     display: none;
+    }
+}
+    
+   
+    
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 25px 25px 25px 25px;
+}
+    
+.logo img {
+    position: absolute;
+    height: 60px; /* Ajuste la taille du logo */
+    left: 20px;
+    top: 25px;
+    
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.contact-btn {
+     white-space: nowrap;
+    background-color: #03036e;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.contact-btn:hover {
+    background-color: #03036e;
+}
+
+h1 {
+    color: #d71920; /* Rouge */
+    font-size: 28px;
+}
+h2 {
+    color: #003366;
+}
+input, button {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid #003366;
+    border-radius: 5px;
+}
+button {
+    background-color: #d71920;
+    color: white;
+    border: none;
+}
+button:hover {
+    background-color: #c3141a;
+}
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    display: none;
+}
+table, th, td {
+    border: 1px solid #003366;
+}
+th {
+    background-color: #003366;
+    color: white;
+}
+td {
+    background-color: #ffffff;
+}
+.no-results {
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+    display: none;
+}
+.download-btn {
+    display: none;
+    margin: 20px 0;
+    
+}
+.logo {
+    width: 100px;
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+#contenu{
+    min-height: 100%;
+    position: relative;
+
+}
+  
+footer {
+color: #03036e;
+width: 100%;
+height: 20px;
+position: absolute;
+bottom: 0;
+left: 0px;
+font-size: 0.7em;
+}
+    </style>
+</head>
+<body>
+  <div class="contenu">
+   <div class="background"></div>
+   <div content>
+    <header>
+      <nav class="navbar"> 
+      <a class="logo">EXCELLENCE MEDICAL GROUP</a>
+      </nav>
+    <div class="logo">
+        <img src="DIS.png" alt="">
+    </div>
+    <nav>
+        <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        <button class="contact-btn">Contactez-nous</button>
+    </nav>
+    
+   </header>
+  </div>
+    <br>
+    <br>
+    
+    <h1>Résultats de l'Examen Blanc</h1>
+    <br>
+    <input type="text" id="searchInput" placeholder="Entrez votre numéro d'anonymat">
+    <button onclick="searchResults()">Rechercher</button>
+    <div class="no-results" id="noResults">Aucun résultat trouvé.</div>
+    <h2 id="studentName" style="display:none;"></h2>
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th>MATIERE</th>
+                <th>NOTE</th>
+            </tr>
+        </thead>
+        <tbody id="resultsBody">
+            <!-- Les données seront insérées ici -->
+        </tbody>
+    </table>
+  <center>
+  <button class="download-btn" id="downloadBtn" onclick="downloadPDF()">Télécharger le bulletin en PDF</button>
+  </center>
+
+    <script>
+        const results = [
+        {
+        "Anonymat": "EMG0006",
+        "Nom": "YAPO",
+        "Prénom": "KOUAKOU QUEREN",
+        "Anat": 12,
+        "Cog": 0,
+        "Bpe": 0,
+        "Bcg": 11,
+        "Sps": 4.26,
+        "Amc": 11,
+        "Total": 38.26
+    },
+    {
+        "Anonymat": "EMG0018",
+        "Nom": "TRAORE",
+        "Prénom": "ABDOUL",
+        "Anat": 11.96,
+        "Cog": 10,
+        "Bpe": 10,
+        "Bcg": 15,
+        "Sps": 11,
+        "Amc": 10.5,
+        "Total": 68.46
+    },
+    {
+        "Anonymat": "EMG0044",
+        "Nom": "OBI",
+        "Prénom": "BENIREY VANESSA",
+        "Anat": 10,
+        "Cog": 6,
+        "Bpe": 14,
+        "Bcg": 14,
+        "Sps": 10,
+        "Amc": 10.5,
+        "Total": 64.5
+    },
+    {
+        "Anonymat": "EMG0079",
+        "Nom": "KOFFI",
+        "Prénom": "KOUAME ALVESTE",
+        "Anat": 12,
+        "Cog": 10,
+        "Bpe": 6,
+        "Bcg": 13,
+        "Sps": 10,
+        "Amc": 10.5,
+        "Total": 61.5
+    },
+    {
+        "Anonymat": "EMG0002",
+        "Nom": "ZRAN",
+        "Prénom": "SEPHORA",
+        "Anat": 9.8,
+        "Cog": 5,
+        "Bpe": 9,
+        "Bcg": 10,
+        "Sps": 9.9,
+        "Amc": 10.5,
+        "Total": 54.2
+    },
+    {
+        "Anonymat": "EMG0057",
+        "Nom": "DOLE",
+        "Prénom": "JEAN TRESOR",
+        "Anat": 3.61,
+        "Cog": 6,
+        "Bpe": 12,
+        "Bcg": 14,
+        "Sps": 8,
+        "Amc": 10.5,
+        "Total": 54.11
+    },
+    {
+        "Anonymat": "EMG0058",
+        "Nom": "KOUASSI",
+        "Prénom": "JEAN LUC",
+        "Anat": 7,
+        "Cog": 4,
+        "Bpe": 8,
+        "Bcg": 11,
+        "Sps": 8,
+        "Amc": 10.5,
+        "Total": 48.5
+    },
+    {
+        "Anonymat": "EMG0033",
+        "Nom": "BECHE",
+        "Prénom": "ROXANE",
+        "Anat": 6.17,
+        "Cog": 0,
+        "Bpe": 0,
+        "Bcg": 10,
+        "Sps": 7.41,
+        "Amc": 10.5,
+        "Total": 34.08
+    },
+    {
+        "Anonymat": "EMG0063",
+        "Nom": "FOFANA",
+        "Prénom": "MABINIA ZEYNAB",
+        "Anat": 6.17,
+        "Cog": 5,
+        "Bpe": 10,
+        "Bcg": 10,
+        "Sps": 7.2,
+        "Amc": 10.5,
+        "Total": 48.87
+    },
+    {
+        "Anonymat": "EMG0011",
+        "Nom": "AMANI",
+        "Prénom": "YAO NICAISE",
+        "Anat": 6,
+        "Cog": 0,
+        "Bpe": 0,
+        "Bcg": 10,
+        "Sps": 6.29,
+        "Amc": 10.5,
+        "Total": 32.79
+    },
+    {
+    "Anonymat": "EMG0052",
+    "Nom": "M'BRA",
+    "Prénom": "CHRIST OTHNIEL",
+    "Anat": 14.5,
+    "Cog": 14,
+    "Bpe": 17,
+    "Bcg": 18,
+    "Sps": 14.0,
+    "Amc": 15.0,
+    "Total": 92.5
+  },
+  {
+    "Anonymat": "EMG0072",
+    "Nom": "KONE",
+    "Prénom": "ZAKARIDJA",
+    "Anat": 12.8,
+    "Cog": 12,
+    "Bpe": 12,
+    "Bcg": 16,
+    "Sps": 13.0,
+    "Amc": 14.5,
+    "Total": 80.3
+  },
+  {
+    "Anonymat": "EMG0048",
+    "Nom": "N'DIN",
+    "Prénom": "CHIALLEY REGINA",
+    "Anat": 10.0,
+    "Cog": 7,
+    "Bpe": 8,
+    "Bcg": 14,
+    "Sps": 11.0,
+    "Amc": 14.5,
+    "Total": 64.5
+  },
+  {
+    "Anonymat": "EMG0060",
+    "Nom": "KOUASSI",
+    "Prénom": "CHRISTINE",
+    "Anat": 11.34,
+    "Cog": 2,
+    "Bpe": 8,
+    "Bcg": 15,
+    "Sps": 4.49,
+    "Amc": 14.5,
+    "Total": 55.33
+  },
+  {
+    "Anonymat": "EMG0068",
+    "Nom": "KOUADIO",
+    "Prénom": "JEAN DANIEL",
+    "Anat": 11.0,
+    "Cog": 3,
+    "Bpe": 10,
+    "Bcg": 14,
+    "Sps": 10.11,
+    "Amc": 14.25,
+    "Total": 62.36
+  },
+  {
+    "Anonymat": "EMG0025",
+    "Nom": "BAKARY",
+    "Prénom": "SEGNON JEAN T.",
+    "Anat": 12.0,
+    "Cog": 7,
+    "Bpe": 10,
+    "Bcg": 16,
+    "Sps": 8.98,
+    "Amc": 14.25,
+    "Total": 68.23
+  },
+  {
+    "Anonymat": "EMG0071",
+    "Nom": "GOMUN",
+    "Prénom": "DEMUN NADINE",
+    "Anat": 8.0,
+    "Cog": 5,
+    "Bpe": 2,
+    "Bcg": 10,
+    "Sps": 6.74,
+    "Amc": 14.25,
+    "Total": 45.99
+  },
+  {
+    "Anonymat": "EMG0032",
+    "Nom": "SORO",
+    "Prénom": "YOH ZEYNAB",
+    "Anat": 3.5,
+    "Cog": 2,
+    "Bpe": 2,
+    "Bcg": 7,
+    "Sps": 6.0,
+    "Amc": 14.25,
+    "Total": 34.75
+  },
+  {
+    "Anonymat": "EMG0013",
+    "Nom": "AMARI",
+    "Prénom": "ANGBA DANIEL",
+    "Anat": 14.0,
+    "Cog": 10,
+    "Bpe": 15,
+    "Bcg": 17,
+    "Sps": 10.0,
+    "Amc": 13.5,
+    "Total": 79.5
+  },
+  {
+    "Anonymat": "EMG0019",
+    "Nom": "ATSE",
+    "Prénom": "FELIX",
+    "Anat": 10.0,
+    "Cog": 7,
+    "Bpe": 11,
+    "Bcg": 15,
+    "Sps": 10.0,
+    "Amc": 13.03,
+    "Total": 66.03
+  },
+  {
+    "Anonymat": "EMG0075",
+    "Nom": "GORO",
+    "Prénom": "MARIAM",
+    "Anat": 17.13,
+    "Cog": 15,
+    "Bpe": 19,
+    "Bcg": 17,
+    "Sps": 14.2,
+    "Amc": 10,
+    "Total": 92.33
+  },
+  {
+    "Anonymat": "EMG0042",
+    "Nom": "SADIA",
+    "Prénom": "EUNICE TRYPHENE",
+    "Anat": 10.34,
+    "Cog": 10,
+    "Bpe": 10,
+    "Bcg": 11,
+    "Sps": 13.3,
+    "Amc": 10,
+    "Total": 64.64
+  },
+  {
+    "Anonymat": "EMG0066",
+    "Nom": "KOUAKOU",
+    "Prénom": "N’MO GRACE",
+    "Anat": 10,
+    "Cog": 10,
+    "Bpe": 10,
+    "Bcg": 13,
+    "Sps": 13,
+    "Amc": 10,
+    "Total": 66
+  },
+  {
+    "Anonymat": "EMG0014",
+    "Nom": "WAWA",
+    "Prénom": "BINJAMIN A.",
+    "Anat": 12.5,
+    "Cog": 10,
+    "Bpe": 11,
+    "Bcg": 15,
+    "Sps": 10.9,
+    "Amc": 10,
+    "Total": 69.4
+  },
+  {
+    "Anonymat": "EMG0077",
+    "Nom": "KODJA",
+    "Prénom": "EMILIA NELLY",
+    "Anat": 13.87,
+    "Cog": 10,
+    "Bpe": 10,
+    "Bcg": 15,
+    "Sps": 10,
+    "Amc": 10,
+    "Total": 68.87
+  },
+  {
+    "Anonymat": "EMG0035",
+    "Nom": "BEDA",
+    "Prénom": "ROXANE",
+    "Anat": 8,
+    "Cog": 7,
+    "Bpe": 11,
+    "Bcg": 10,
+    "Sps": 10,
+    "Amc": 10,
+    "Total": 56
+  },
+  {
+    "Anonymat": "EMG0036",
+    "Nom": "SONAN",
+    "Prénom": "ASSEMOU GRACE E.",
+    "Anat": 0,
+    "Cog": 4,
+    "Bpe": 8,
+    "Bcg": 13,
+    "Sps": 8.08,
+    "Amc": 9.25,
+    "Total": 42.33
+  },
+  {
+    "Anonymat": "EMG0053",
+    "Nom": "DJEDJI",
+    "Prénom": "CHRIST ANDERSON",
+    "Anat": 10.52,
+    "Cog": 5,
+    "Bpe": 8,
+    "Bcg": 12,
+    "Sps": 10.78,
+    "Amc": 8,
+    "Total": 54.3
+  },
+  {
+    "Anonymat": "EMG0009",
+    "Nom": "ALLA",
+    "Prénom": "EZECHIAS EMMANUEL",
+    "Anat": 10.1,
+    "Cog": 0,
+    "Bpe": 11,
+    "Bcg": 16,
+    "Sps": 9.4,
+    "Amc": 8,
+    "Total": 54.5
+  },
+  {
+    "Anonymat": "EMG0021",
+    "Nom": "BAH",
+    "Prénom": "THIERNO SADOU",
+    "Anat": 7.52,
+    "Cog": 0,
+    "Bpe": 6,
+    "Bcg": 14,
+    "Sps": 5.84,
+    "Amc": 8,
+    "Total": 41.36
+  },
+  {
+    "Anonymat": "EMG0084",
+    "Nom": "KONATÉ",
+    "Prénom": "ADAMA",
+    "Anat": 10.5,
+    "Cog": 0,
+    "Bpe": 0,
+    "Bcg": 0,
+    "Sps": 0,
+    "Amc": 8,
+    "Total": 18.5
+  },
+  {
+    "Anonymat": "EMG0020",
+    "Nom": "TRAH",
+    "Prénom": "KANEY EUNICE ROXANE",
+    "Anat": 10.5,
+    "Cog": 10,
+    "Bpe": 11,
+    "Bcg": 14,
+    "Sps": 11,
+    "Amc": 7,
+    "Total": 63.5
+  },
+  {
+    "Anonymat": "EMG0012",
+    "Nom": "YAO",
+    "Prénom": "FRANCISCA OLIVE",
+    "Anat": 10,
+    "Cog": 10,
+    "Bpe": 12,
+    "Bcg": 13,
+    "Sps": 10,
+    "Amc": 7,
+    "Total": 62
+  },
+  {
+    "Anonymat": "EMG0028",
+    "Nom": "SYLLA",
+    "Prénom": "SOBGE YASMINE",
+    "Anat": 8.57,
+    "Cog": 4,
+    "Bpe": 2,
+    "Bcg": 6,
+    "Sps": 5.4,
+    "Amc": 7,
+    "Total": 32.97
+  },
+  {
+    "Anonymat": "EMG0001",
+    "Nom": "ABO",
+    "Prénom": "AUDREY ANGE",
+    "Anat": 12.92,
+    "Cog": 3,
+    "Bpe": 10,
+    "Bcg": 15,
+    "Sps": 11.91,
+    "Amc": 6.75,
+    "Total": 59.58
+  },
+  {
+    "Anonymat": "EMG0016",
+    "Nom": "VASSI",
+    "Prénom": "MARIE PAUL",
+    "Anat": 5.5,
+    "Cog": 0,
+    "Bpe": 0,
+    "Bcg": 10,
+    "Sps": 7.64,
+    "Amc": 6.75,
+    "Total": 29.89
+  },
+  {
+    "Anonymat": "EMG0078",
+    "Nom": "KONAN",
+    "Prénom": "OLIVIA M",
+    "Anat": 7.36,
+    "Cog": 10,
+    "Bpe": 9,
+    "Bcg": 13,
+    "Sps": 10,
+    "Amc": 6,
+    "Total": 55.36
+  },
+  {
+    "Anonymat": "EMG0076",
+    "Nom": "KONE",
+    "Prénom": "FATIM",
+    "Anat": 5.7,
+    "Cog": 6,
+    "Bpe": 3,
+    "Bcg": 12,
+    "Sps": 7.2,
+    "Amc": 6,
+    "Total": 39.9
+  },
+  {
+    "Anonymat": "EMG0026",
+    "Nom": "TANOH",
+    "Prénom": "FAVIER",
+    "Anat": 8.5,
+    "Cog": 7,
+    "Bpe": 8,
+    "Bcg": 14,
+    "Sps": 8.76,
+    "Amc": 5.5,
+    "Total": 51.76
+  },
+  {
+    "Anonymat": "EMG0030",
+    "Nom": "SOUMOUNOU",
+    "Prénom": "LASSANA BALE",
+    "Anat": 7.8,
+    "Cog": 7,
+    "Bpe": 12,
+    "Bcg": 13,
+    "Sps": 0,
+    "Amc": 5.5,
+    "Total": 45.3
+  },
+  {
+    "Anonymat": "EMG0007",
+    "Nom": "AKPA",
+    "Prénom": "O’NEL MOCK",
+    "Anat": 13,
+    "Cog": 10,
+    "Bpe": 14,
+    "Bcg": 18,
+    "Sps": 10.33,
+    "Amc": 5,
+    "Total": 70.33
+  },
+  {
+    "Anonymat": "EMG0074",
+    "Nom": "KONE",
+    "Prénom": "TENENA ABOUBACAR",
+    "Anat": 3,
+    "Cog": 3,
+    "Bpe": 12,
+    "Bcg": 6,
+    "Sps": 6,
+    "Amc": 4.25,
+    "Total": 34.25
+  },
+  {
+    "Anonymat": "EMG0070",
+    "Nom": "KORANGUI",
+    "Prénom": "ANOKI ASHLEY",
+    "Anat": 6.25,
+    "Cog": 0,
+    "Bpe": 0,
+    "Bcg": 15,
+    "Sps": 9,
+    "Amc": 0,
+    "Total": 30.25
+  },
+  {
+    "Anonymat": "EMG0083",
+    "Nom": "TCHIMOU",
+    "Prénom": "CHRIST",
+    "Anat": 0,
+    "Cog": 1,
+    "Bpe": 7,
+    "Bcg": 3,
+    "Sps": 8.98,
+    "Amc": 0,
+    "Total": 19.98
+  },
+  {
+    "Anonymat": "EMG0023",
+    "Nom": "BAI",
+    "Prénom": "ESTHER PRISCA",
+    "Anat": 0,
+    "Cog": 4,
+    "Bpe": 8,
+    "Bcg": 6,
+    "Sps": 8.8,
+    "Amc": 0,
+    "Total": 26.8
+  },
+  {
+    "Anonymat": "EMG0056",
+    "Nom": "KOUTOUAN",
+    "Prénom": "LAURAINE",
+    "Anat": 3,
+    "Cog": 1,
+    "Bpe": 2,
+    "Bcg": 5,
+    "Sps": 2.24,
+    "Amc": 0,
+    "Total": 13.24
+  },
+    {
+        "Anonymat": "EMG0052",
+        "Nom": "M’BRA",
+        "Prénom": "CHRIS OTHNIEL",
+        "Anat": 14.5,
+        "Cog": 14,
+        "Bpe": 17,
+        "Bcg": 18,
+        "Sps": 14,
+        "Amc": 15,
+        "Total": 92.5
+    },
+    {
+        "Anonymat": "EMG0072",
+        "Nom": "KONE",
+        "Prénom": "ZAKARIDJA",
+        "Anat": 12.8,
+        "Cog": 12,
+        "Bpe": 12,
+        "Bcg": 16,
+        "Sps": 13,
+        "Amc": 14.5,
+        "Total": 80.3
+    },
+    {
+        "Anonymat": "EMG0048",
+        "Nom": "N’DIN",
+        "Prénom": "CHIALLEY REGINA",
+        "Anat": 10,
+        "Cog": 7,
+        "Bpe": 8,
+        "Bcg": 14,
+        "Sps": 11,
+        "Amc": 14.5,
+        "Total": 64.5
+    },
+    {
+        "Anonymat": "EMG0060",
+        "Nom": "KOUASSI",
+        "Prénom": "CHRISTINE",
+        "Anat": 11.34,
+        "Cog": 2,
+        "Bpe": 8,
+        "Bcg": 15,
+        "Sps": 4.49,
+        "Amc": 14.5,
+        "Total": 55.33
+    },
+    {
+        "Anonymat": "EMG0068",
+        "Nom": "KOUADIO",
+        "Prénom": "JEAN DANIEL",
+        "Anat": 11,
+        "Cog": 3,
+        "Bpe": 10,
+        "Bcg": 14,
+        "Sps": 10.11,
+        "Amc": 14.25,
+        "Total": 62.36
+    },
+    {
+        "Anonymat": "EMG0025",
+        "Nom": "BAKARY",
+        "Prénom": "SEGNON JEAN T.",
+        "Anat": 12,
+        "Cog": 7,
+        "Bpe": 10,
+        "Bcg": 16,
+        "Sps": 8.98,
+        "Amc": 14.25,
+        "Total": 68.23
+    },
+    {
+        "Anonymat": "EMG0071",
+        "Nom": "GOMUN",
+        "Prénom": "DEMUN NADINE",
+        "Anat": 8,
+        "Cog": 5,
+        "Bpe": 2,
+        "Bcg": 10,
+        "Sps": 6.74,
+        "Amc": 14.25,
+        "Total": 45.99
+    },
+    {
+        "Anonymat": "EMG0032",
+        "Nom": "SORO",
+        "Prénom": "YOH ZEYNAB",
+        "Anat": 3.5,
+        "Cog": 2,
+        "Bpe": 2,
+        "Bcg": 7,
+        "Sps": 6,
+        "Amc": 14.25,
+        "Total": 34.75
+    },
+    {
+        "Anonymat": "EMG0013",
+        "Nom": "AMARI",
+        "Prénom": "ANGBA DANIEL",
+        "Anat": 14,
+        "Cog": 10,
+        "Bpe": 15,
+        "Bcg": 17,
+        "Sps": 10,
+        "Amc": 13.5,
+        "Total": 79.5
+    },
+    {
+        "Anonymat": "EMG0019",
+        "Nom": "ATSE",
+        "Prénom": "FELIX",
+        "Anat": 10,
+        "Cog": 7,
+        "Bpe": 11,
+        "Bcg": 15,
+        "Sps": 10,
+        "Amc": 13.03,
+        "Total": 66.03
+    },
+    {
+        "Anonymat": "EMG0051",
+        "Nom": "DIALLO",
+        "Prénom": "ZEYNAB",
+        "Anat": 13.2,
+        "Cog": 10,
+        "Bpe": 7,
+        "Bcg": 14,
+        "Sps": 13.25,
+        "Amc": 13,
+        "Total": 70.45
+    },
+    {
+        "Anonymat": "EMG0049",
+        "Nom": "DIALLO",
+        "Prénom": "MARIAM",
+        "Anat": 10.5,
+        "Cog": 7,
+        "Bpe": 12,
+        "Bcg": 12,
+        "Sps": 12.8,
+        "Amc": 13,
+        "Total": 67.3
+    },
+    {
+        "Anonymat": "EMG0043",
+        "Nom": "DAPLE",
+        "Prénom": "JEAN-MICHEL",
+        "Anat": 4.5,
+        "Cog": 10,
+        "Bpe": 10,
+        "Bcg": 15,
+        "Sps": 8,
+        "Amc": 13,
+        "Total": 60.5
+    },
+    {
+        "Anonymat": "EMG0067",
+        "Nom": "GOKON",
+        "Prénom": "BI IRIE JOSEPH",
+        "Anat": 10,
+        "Cog": 6,
+        "Bpe": 11,
+        "Bcg": 11,
+        "Sps": 8,
+        "Amc": 13,
+        "Total": 59
+    },
+    {
+        "Anonymat": "EMG0003",
+        "Nom": "ABOU",
+        "Prénom": "AHIMAN DJEDJI CHRIST",
+        "Anat": 5.17,
+        "Cog": 4,
+        "Bpe": 13,
+        "Bcg": 14,
+        "Sps": 7,
+        "Amc": 13,
+        "Total": 56.17
+    },
+    {
+        "Anonymat": "EMG0017",
+        "Nom": "ATSAIN",
+        "Prénom": "EUNICE",
+        "Anat": 2.5,
+        "Cog": 1,
+        "Bpe": 2,
+        "Bcg": 0,
+        "Sps": 0,
+        "Amc": 13,
+        "Total": 18.5
+    },
+    {
+        "Anonymat": "EMG0040",
+        "Nom": "SANGAN",
+        "Prénom": "ADJOUA DORCAS",
+        "Anat": 13.06,
+        "Cog": 7,
+        "Bpe": 13,
+        "Bcg": 16,
+        "Sps": 7.9,
+        "Amc": 12,
+        "Total": 68.96
+    },
+    {
+        "Anonymat": "EMG0061",
+        "Nom": "EDJA",
+        "Prénom": "DORGELES YVHANE",
+        "Anat": 9.5,
+        "Cog": 5,
+        "Bpe": 10,
+        "Bcg": 13,
+        "Sps": 5,
+        "Amc": 12,
+        "Total": 54.5
+    },
+    {
+        "Anonymat": "EMG0005",
+        "Nom": "ABOYA",
+        "Prénom": "KOFFI ELIE",
+        "Anat": 3,
+        "Cog": 3,
+        "Bpe": 3,
+        "Bcg": 10,
+        "Sps": 5,
+        "Amc": 12,
+        "Total": 36
+    },
+    {
+        "Anonymat": "EMG0022",
+        "Nom": "TOBO",
+        "Prénom": "ZRANSEU YOLANDE D.",
+        "Anat": 3,
+        "Cog": 2,
+        "Bpe": 10,
+        "Bcg": 7,
+        "Sps": 6.96,
+        "Amc": 11.75,
+        "Total": 40.71
+    },
+    {
+        "Anonymat": "EMG0047",
+        "Nom": "DIABATE",
+        "Prénom": "DOCHEMIN CEDRIC",
+        "Anat": 9,
+        "Cog": 3,
+        "Bpe": 11,
+        "Bcg": 14,
+        "Sps": 6.81,
+        "Amc": 11.75,
+        "Total": 55.56
+    },
+    {
+        "Anonymat": "EMG0082",
+        "Nom": "KOITA",
+        "Prénom": "JAAFAR",
+        "Anat": 8.5,
+        "Cog": 10,
+        "Bpe": 11,
+        "Bcg": 14,
+        "Sps": 6.51,
+        "Amc": 11.75,
+        "Total": 61.76
+    },
+    {
+        "Anonymat": "EMG0065",
+        "Nom": "GOGBE",
+        "Prénom": "LAHIRI GRACE YASMINE",
+        "Anat": 3.5,
+        "Cog": 0,
+        "Bpe": 0,
+        "Bcg": 4,
+        "Sps": 4.04,
+        "Amc": 11.75,
+        "Total": 23.29
+    },
+    {
+        "Anonymat": "EMG0046",
+        "Nom": "N’GUESSAN",
+        "Prénom": "BERTRAND MARC A.",
+        "Anat": 15.21,
+        "Cog": 10,
+        "Bpe": 14,
+        "Bcg": 16,
+        "Sps": 14,
+        "Amc": 11,
+        "Total": 80.21
+    },
+    {
+        "Anonymat": "EMG0041",
+        "Nom": "BORO",
+        "Prénom": "AMINATA",
+        "Anat": 9.5,
+        "Cog": 6,
+        "Bpe": 10,
+        "Bcg": 15,
+        "Sps": 7,
+        "Amc": 11,
+        "Total": 58.5
+    },
+    {
+        "Anonymat": "EMG0055",
+        "Nom": "DJOMAN",
+        "Prénom": "LUDOVIC",
+        "Anat": 7,
+        "Cog": 7,
+        "Bpe": 10,
+        "Bcg": 10,
+        "Sps": 7,
+        "Amc": 11,
+        "Total": 52
+    },
+    {
+        "Anonymat": "EMG0006",
+        "Nom": "YAPO",
+        "Prénom": "KOUAKOU QUEREN",
+        "Anat": 12,
+        "Cog": 0,
+        "Bpe": 0,
+        "Bcg": 11,
+        "Sps": 4.26,
+        "Amc": 11,
+        "Total": 38.26
+    }
+];
+
+
+let currentResult = null;
+
+function searchResults() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const resultsTable = document.getElementById("resultsTable");
+    const resultsBody = document.getElementById("resultsBody");
+    const noResults = document.getElementById("noResults");
+    const studentName = document.getElementById("studentName");
+    const downloadBtn = document.getElementById("downloadBtn");
+
+    resultsTable.style.display = "none";
+    noResults.style.display = "none";
+    resultsBody.innerHTML = "";
+    studentName.style.display = "none";
+    downloadBtn.style.display = "none";
+
+    const result = results.find(res => res.Anonymat.toLowerCase() === input);
+
+    if (result) {
+        currentResult = result;
+        studentName.textContent = `Nom de l'étudiant : ${result.Nom} ${result.Prénom}`;
+        studentName.style.display = "block";
+
+        resultsBody.innerHTML = `
+            <tr><td>ANATOMIE</td><td>${result.Anat}</td></tr>
+            <tr><td>CHIMIE ORGANIQUE ET GENERALE</td><td>${result.Cog}</td></tr>
+            <tr><td>BIOPHYSIQUE ET PHYSIQUE</td><td>${result.Bpe}</td></tr>
+            <tr><td>BIOLOGIE CELLULAIRE ET GENETIQUE</td><td>${result.Bcg}</td></tr>
+            <tr><td>SOCIOLOGIE PSYCHATRIE</td><td>${result.Sps}</td></tr>
+            <tr><td>AMC</td><td>${result.Amc}</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>${result.Total}</strong></td></tr>
+        `;
+
+        resultsTable.style.display = "table";
+        downloadBtn.style.display = "block";
+    } else {
+        noResults.style.display = "block";
+    }
+}
+
+function downloadPDF() {
+    if (!currentResult) return;
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.text("BULLETIN DE L’EXAMEN BLANC DU PREMIER SEMESTRE", 20, 20);
+
+    doc.setFontSize(12);
+    doc.text(`Nom : ${currentResult.Nom}`, 20, 40);
+    doc.text(`Prénoms : ${currentResult.Prénom}`, 20, 50);
+    doc.text(`Anonymat : ${currentResult.Anonymat}`, 20, 60);
+
+    const tableContent = [
+        ["ANATOMIE", currentResult.Anat],
+        ["CHIMIE ORGANIQUE ET GENERALE", currentResult.Cog],
+        ["BIOLOGIE CELLULAIRE ET GENETIQUE", currentResult.Bcg],
+        ["BIOPHYSIQUE ET PHYSIQUE", currentResult.Bpe],
+        ["SOCIOLOGIE PSYCHATRIE", currentResult.Sps],
+        ["AMC", currentResult.Amc],
+        ["Total", currentResult.Total],
+    ];
+
+    doc.autoTable({
+        startY: 80,
+        head: [["Matières", "Notes/20"]],
+        body: tableContent,
+    });
+
+    doc.text("EMG, votre réussite notre priorité", 20, doc.lastAutoTable.finalY + 50);
+
+    doc.text("Le Président", 140, doc.lastAutoTable.finalY + 70);
+    doc.text("Dr TEA. THEOPHILE", 140, doc.lastAutoTable.finalY + 80);
+
+    doc.save(`Bulletin_${currentResult.Nom}.pdf`);
+  }
+   </script>
+</div>
+</body>
+<footer>
+<p><strong>Excellence Médical Group</strong></p>
+<p>Structure d'encadrement des étudiants en première année de Médecine et Odontostomatologie.</p>
+<p>Contact : 01 51 80 5422 | Email : <a href="mailto:medicalgroupencadrement@gmail.com">medicalgroupencadrement@gmail.com</a></p>
+<div class="social-icons">
+    <a href="https://facebook.com/profil.php?.id=61559904310098" target="_blank">Facebook</a>
+</div>
+</footer>
+
+</html>
